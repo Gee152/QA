@@ -5,18 +5,19 @@ import { ITestScenarioRepository } from "../../domain/repositories/ITestScenario
 import { TypeORMTestScenarioRepository } from "../../infra/repositories/TypeORMTestScenarioRepository"
 import { ITestResultRepository } from "../../domain/repositories/ITestResultRepository"
 import { TypeORMTestResultRepository } from "../../infra/repositories/TypeORMTestResultRepository"
+import { IModuleRepository } from "../../domain/repositories/IModuleRepository"
+import { TypeORMModuleRepository } from "../../infra/repositories/TypeORMModuleRepository"
 
-container.registerSingleton<IUserRepository>(
-    "UserRepository",
-    TypeORMUserRepository
-)
+import { CreateUserUseCase, GetUserUseCase, ListUsersUseCase, UpdateUserUseCase, DeleteUserUseCase, AuthenticateUserUseCase } from "../../domain/useCases/UserUseCase"
 
-container.registerSingleton<ITestScenarioRepository>(
-    "TestScenarioRepository",
-    TypeORMTestScenarioRepository
-)
+container.registerSingleton<IUserRepository>("UserRepository", TypeORMUserRepository)
+container.registerSingleton<ITestScenarioRepository>("TestScenarioRepository", TypeORMTestScenarioRepository)
+container.registerSingleton<ITestResultRepository>("TestResultRepository", TypeORMTestResultRepository)
+container.registerSingleton<IModuleRepository>("ModuleRepository", TypeORMModuleRepository)
 
-container.registerSingleton<ITestResultRepository>(
-    "TestResultRepository",
-    TypeORMTestResultRepository
-)
+container.registerSingleton<CreateUserUseCase>(CreateUserUseCase)
+container.registerSingleton<GetUserUseCase>(GetUserUseCase)
+container.registerSingleton<ListUsersUseCase>(ListUsersUseCase)
+container.registerSingleton<UpdateUserUseCase>(UpdateUserUseCase)
+container.registerSingleton<DeleteUserUseCase>(DeleteUserUseCase)
+container.registerSingleton<AuthenticateUserUseCase>(AuthenticateUserUseCase)
